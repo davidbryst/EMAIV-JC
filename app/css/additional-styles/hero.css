@@ -1,0 +1,10 @@
+.hero {
+    background-image: linear-gradient(to bottom,#f8982a09,#f8982a41), url('/hero.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+.realisation {
+    background-image: linear-gradient(to bottom,#f8982a4d,#f8982a80), url('/realisation.jpg');
+    background-size: cover;
+    height: 70vh;
+}
