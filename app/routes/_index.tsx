@@ -1,12 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
-import { About } from "~/components/about/about";
-import { Comment } from "~/components/comment/comment";
-import { Features } from "~/components/features/features";
-import { Footer } from "~/components/footer/footer";
-import { Header } from "~/components/header/header";
-import { Hero } from "~/components/hero/hero";
-import { Newsletter } from "~/components/newsletter/newsletter";
-import { Realisation } from "~/components/realisation/realisation";
+import About from "~/components/about";
+import Comment from "~/components/comment";
+import Features from "~/components/features";
+import Footer from "~/components/footer";
+import Header from "~/components/header";
+import Hero from "~/components/hero";
+import Newsletter from "~/components/newsletter";
+import Realisation from "~/components/realisation";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,14 +18,12 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      <Header />
       <Hero />
       <About />
       <Features />
       <Realisation />
       <Comment />
       <Newsletter />
-      <Footer />
     </div>
   );
 }

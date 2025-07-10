@@ -1,7 +1,12 @@
 import type { Config } from "tailwindcss";
+import { mtConfig } from "@material-tailwind/react";
 
 export default {
-  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+  
+    "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}"
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -18,5 +23,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [mtConfig],
 } satisfies Config;

@@ -1,38 +1,79 @@
-// Import styles of packages that you've installed.
-// All packages except `@mantine/hooks` require styles imports
-import '@mantine/core/styles.css';
-
 import {
+
   Links,
+
   Meta,
+
   Outlet,
+
   Scripts,
+
   ScrollRestoration,
-} from '@remix-run/react';
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+
+} from "@remix-run/react";
+
+
+
+import type { LinksFunction } from "@remix-run/node";
+
+import stylesheet from "~/tailwind.css?url";
+import Header from "./components/header";
+import Footer from "./components/footer";
+
+
+
+export const links: LinksFunction = () => [
+
+  { rel: "stylesheet", href: stylesheet },
+
+];
+
+
 
 export function Layout({ children }: { children: React.ReactNode }) {
+
   return (
+
     <html lang="en">
+
       <head>
+
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <Meta />
+
         <Links />
-        <ColorSchemeScript />
+
       </head>
+
       <body>
-        <MantineProvider>{children}</MantineProvider>
+
+        <Header />
+        <div className="min-h-screen flex flex-col">
+
+        {children}
+        </div>
+        <Footer />
+
+        {/* ScrollRestoration is used to restore scroll position on navigation */}
         <ScrollRestoration />
+
         <Scripts />
+
       </body>
+
     </html>
+
   );
+
 }
 
+
+
 export default function App() {
+
   return <Outlet />;
+
 }
