@@ -11,7 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Les routes /api/* utilisent une auth par session (auth:web) mais sans
+        // token CSRF cote frontend : on les exclut de la verification CSRF.
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

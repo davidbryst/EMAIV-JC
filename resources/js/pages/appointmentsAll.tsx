@@ -123,7 +123,7 @@ const AppointmentsAll: React.FC = () => {
     };
 
     return (
-        <div className="w-10xl mx-auto min-h-dvh p-2">
+        <div className="w-10xl mx-auto flex min-h-[97dvh] flex-col p-2">
             {/* Indicateur de chargement */}
             {/* {loading && (
         <div className="bg-white rounded-lg shadow p-6 mb-6">
@@ -301,7 +301,7 @@ const AppointmentsAll: React.FC = () => {
             {/* Statistiques rapides */}
             {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
       </div> */}
-            <div className="rounded-2xl bg-white p-2 shadow-lg ring-1 ring-gray-100 sm:p-4">
+            <div className="flex-1 rounded-2xl bg-white p-2 shadow-lg ring-1 ring-gray-100 sm:p-4">
                 {/* <div className=""> */}
                 {loading ? (
                     <div className="py-20 text-center text-gray-500">
