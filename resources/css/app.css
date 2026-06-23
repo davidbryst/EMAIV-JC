@@ -1,0 +1,470 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display:
+        'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+
+    /* ===== Palette « Évasion éditoriale » (chaude, premium) ===== */
+    --color-paper: #f7eede;     /* ivoire chaud — fond principal */
+    --color-paper-2: #f0e3cd;   /* sable — panneaux alternés */
+    --color-cream: #fffaf1;     /* crème — cartes */
+    --color-ink: #20180f;       /* encre espresso — texte & sections sombres */
+    --color-ink-2: #2b2017;     /* encre légèrement plus claire */
+    --color-ink-soft: #6c5d4b;  /* texte secondaire chaud */
+    --color-amber: #df6b0c;     /* ambre signature */
+    --color-amber-2: #f59a3e;   /* ambre clair */
+    --color-amber-deep: #a8480a;/* ambre foncé (texte sur clair) */
+    --color-sand: #e4d3b3;      /* bordures chaudes */
+    --color-clay: #b14b2a;      /* terracotta — accent secondaire */
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    /* Breakpoints additionnels pour un meilleur responsive */
+    --breakpoint-xs: 480px;
+    --breakpoint-3xl: 1920px;
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.87 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.87 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.985 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+    html {
+        @apply scroll-smooth antialiased;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-semibold text-foreground;
+    }
+    a {
+        @apply text-foreground;
+    }
+}
+
+
+@layer components {
+    .container-app {
+        @apply w-full xl:w-7xl mx-auto px-4 md:px-0 lg:px-8;
+    }
+    .section {
+        @apply py-10 sm:py-14 lg:py-20;
+    }
+    .card {
+        background: var(--color-cream);
+        border: 1px solid var(--color-sand);
+        border-radius: 1rem;
+        box-shadow: 0 1px 2px rgba(32, 24, 15, 0.04);
+    }
+    .glass {
+        @apply backdrop-blur-md;
+        background: rgba(255, 250, 241, 0.72);
+    }
+    /* Bouton primaire (ambre signature) */
+    .primaryButton {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-full text-white font-semibold transition-all duration-200 shadow-md hover:shadow-lg;
+        background: var(--color-amber);
+    }
+    .primaryButton:hover { background: var(--color-amber-deep); }
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-full font-semibold transition-colors;
+        color: var(--color-ink);
+        border: 1.5px solid var(--color-sand);
+    }
+    .btn-secondary:hover { background: rgba(32, 24, 15, 0.04); border-color: var(--color-ink); }
+}
+
+@layer utilities {
+    .grid-auto-fit {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+
+    /* Animations personnalisées pour les rendez-vous */
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+    }
+
+    .animate-bounce-in {
+        animation: bounceIn 0.6s ease-out forwards;
+    }
+
+    .animate-scale-in {
+        animation: scaleIn 0.4s ease-out forwards;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+    }
+}
+
+
+.pop {
+  @apply block translate-y-0;
+
+}
+.unpop {
+  @apply block -translate-y-96 opacity-0;
+
+}
+
+.hero-bg {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%),
+    url(/assets/bg.jpg);
+    /* url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8&auto=format&fit=crop&w=1080&q=80); */
+  padding-top: calc(var(--mantine-spacing-xl) * 3);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 3);
+}
+.hero1-bg {
+  background-color: #11284b;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(40deg, rgba(130, 201, 30, 0) 0%, #062343 80%),
+    url(/assets/bg1.jpg);
+    /* url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8&auto=format&fit=crop&w=1080&q=80); */
+  padding-top: calc(var(--mantine-spacing-xl) * 3);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 3);
+}
+
+/* =====================================================================
+   DESIGN SYSTEM — « Évasion éditoriale » (Emaiv-JC)
+   ===================================================================== */
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-feature-settings: "ss01", "cv01";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-amber);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* --- Surtitre / kicker --- */
+  .kicker {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-bold uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-amber-deep);
+  }
+  .kicker::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-amber);
+    display: inline-block;
+  }
+  .kicker-light { color: var(--color-amber-2); }
+
+  /* --- Boutons (chaque variante est autonome : pas de @apply d'une classe custom) --- */
+  .btn-primary,
+  .btn-ink,
+  .btn-ghost,
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 font-semibold rounded-full transition-all duration-300;
+  }
+  .btn-primary {
+    color: #fff;
+    background: var(--color-amber);
+    box-shadow: 0 14px 30px -12px rgba(223, 107, 12, 0.65);
+  }
+  .btn-primary:hover { background: var(--color-amber-deep); transform: translateY(-2px); }
+  .btn-ink { background: var(--color-ink); color: var(--color-paper); }
+  .btn-ink:hover { transform: translateY(-2px); background: var(--color-ink-2); }
+  .btn-ghost {
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-sand);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--color-ink); background: rgba(32,24,15,0.04); }
+  .btn-light { background: var(--color-paper); color: var(--color-ink); }
+  .btn-light:hover { transform: translateY(-2px); background: #fff; }
+
+  /* --- Cartes chaudes --- */
+  .card-warm {
+    background: var(--color-cream);
+    border: 1px solid var(--color-sand);
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px rgba(32,24,15,0.04);
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
+  }
+  .card-warm:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 50px -28px rgba(32,24,15,0.35);
+  }
+
+  /* --- Puce / chip --- */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold;
+    background: rgba(223,107,12,0.10);
+    color: var(--color-amber-deep);
+    border: 1px solid rgba(223,107,12,0.18);
+  }
+  .chip-dark {
+    background: rgba(255,255,255,0.08);
+    color: var(--color-paper);
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+}
+
+@layer utilities {
+  /* --- Grain léger global --- */
+  .grain::after {
+    content: "";
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* --- Traitement photo du hero (chaud) --- */
+  .hero-evasion {
+    background-color: var(--color-ink);
+    background-image:
+      linear-gradient(180deg, rgba(20,15,9,0.42) 0%, rgba(20,15,9,0.70) 52%, rgba(20,15,9,0.94) 100%),
+      url(/assets/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* --- Trajectoire en pointillés (motif voyage) --- */
+  .dotted-path {
+    background-image: repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 14px);
+    height: 2px;
+  }
+
+  /* --- Révélation au chargement (staggerable via animation-delay inline) --- */
+  .reveal { opacity: 0; animation: revealUp 0.85s cubic-bezier(.2,.7,.2,1) forwards; }
+  .reveal-blur { opacity: 0; animation: revealBlur 1s cubic-bezier(.2,.7,.2,1) forwards; }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealBlur {
+  from { opacity: 0; transform: translateY(18px) scale(.98); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes kenburns {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-blur { animation: none; opacity: 1; }
+}
